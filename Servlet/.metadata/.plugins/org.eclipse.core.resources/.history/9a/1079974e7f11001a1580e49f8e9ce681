@@ -1,0 +1,49 @@
+package com.manthan.employee.jspfile;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.manthan.employee.DaoImplement.EmployeeDao;
+import com.manthan.employee.DaoImplement.EmployeeDaoImplement;
+
+@WebServlet("/loginser")
+public class LoginJSP extends HttpServlet{
+
+	static int count;
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		int emp_ID=Integer.parseInt(req.getParameter("emp_ID"));
+		String Password=req.getParameter("password");
+		EmployeeDao dao=new EmployeeDaoImplement();
+		Map<Integer, Integer> m=new HashMap<Integer, Integer>();
+		
+		if(dao.LoginEmployee(emp_ID, Password)) {
+			HttpSession httpSession=req.getSession(true);
+			httpSession.setAttribute("ID", emp_ID);
+			if(!m.containsKey(emp_ID))
+			{
+				m.put(emp_ID, 1);
+			}
+			else {
+				count=m.get(emp_ID);
+				m.put(emp_ID, count+1);
+			}
+			System.out.println(m);
+			req.setAttribute("msg", "Employee Has been added");
+			req.getRequestDispatcher("./HomePage").forward(req, resp);
+			
+		}//if condition
+		else {
+			req.setAttribute("msg", "invalid user");
+			req.getRequestDispatcher("./loginPage").forward(req, resp);
+		}
+	}//doPOst()
+}//loginjsp

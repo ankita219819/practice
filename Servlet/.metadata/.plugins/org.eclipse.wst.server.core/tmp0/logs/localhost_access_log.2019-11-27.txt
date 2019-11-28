@@ -1,0 +1,10 @@
+127.0.0.1 - - [27/Nov/2019:21:41:27 +0530] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [27/Nov/2019:21:41:48 +0530] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:41:50 +0530] "GET /EmployeeWebApp/loginser HTTP/1.1" 405 1116
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:42:17 +0530] "GET /EmployeeWebApp/loginPage HTTP/1.1" 200 527
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:42:33 +0530] "POST /EmployeeWebApp/loginser HTTP/1.1" 200 586
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:45:46 +0530] "POST /EmployeeWebApp/loginser HTTP/1.1" 200 586
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:46:11 +0530] "POST /EmployeeWebApp/loginser HTTP/1.1" 200 586
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:47:23 +0530] "GET /EmployeeWebApp/loginPage HTTP/1.1" 200 527
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:47:33 +0530] "POST /EmployeeWebApp/loginser HTTP/1.1" 200 240
+0:0:0:0:0:0:0:1 - - [27/Nov/2019:21:47:38 +0530] "GET /EmployeeWebApp/dataPage HTTP/1.1" 200 604

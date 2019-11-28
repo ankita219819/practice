@@ -1,0 +1,4 @@
+1572791588822	Move 'javax.servlet-api-3.1.0.jar' to 'lib'
+1572791596158	Move 'mysql-connector-java-5.1.38.jar' to 'lib'
+1572791604418	Move 'loginForm.html' to 'WebContent'
+1572972548079	Rename resource 'loginForm.html'
