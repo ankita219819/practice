@@ -3,10 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%
-	//String msg = (String) request.getAttribute("Invalid_msg");
-	String lmsg = (String) request.getAttribute("msg");
-	Map m=(Map)request.getAttribute("map");
-	//String type=m.getClass().getName();
+	String count = (String) request.getAttribute("close");
+	//String lmsg = (String) request.getAttribute("lmsg");
+%>
+<%
+	String lmsg = (String) request.getAttribute("lmsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -15,27 +16,32 @@
 <title>Login Form</title>
 </head>
 <body>
-	<%if(m.containsKey(key)) %>
-	<p style="font-size: 20px; color: red;"><%=m %></p>
-	
+	<%
+		if ((count != null) && (count.compareTo("hello") == 0)) {
+	%><p style="font-size: 15px; color: red;">Exceeded your login limit</p>
+	<%
+		}
+	%>
+
 	<%
 		if (lmsg != null) {
 	%>
-	<p style="font-size: 20px; color: green;"><%=lmsg%></p>
+	<p style="font-size: 13px; color: red;"><%=lmsg%></p>
 	<%
 		}
 	%>
 	<form action="./loginser" method="post">
 		<legend style="color: blue;">Login Form</legend>
 		<fieldset>
-			<label>User ID: </label> <input id="id" type="text" name="emp_ID"> 
-			<br>
-			<br> 
-			<label>Password: </label> <input type="password" name="password">
-			<br>
-			<br> 
-			<input type="submit" value="Log IN"> &nbsp &nbsp
-			<a href="./signin"> <input type="button" value="Sign IN"></a>
+			<label>User ID: </label> <input type="text" name="emp_ID"
+				<%if ((count != null) && (count.compareTo("hello") == 0)) {%>
+				disabled="disabled" <%}%>> <br> <br> <label>Password:
+			</label> <input type="password" name="password"
+				<%if ((count != null) && (count.compareTo("hello") == 0)) {%>
+				disabled="disabled" <%}%>> <br> <br> <input
+				type="submit" value="Log IN"> &nbsp &nbsp <a href="./signin">
+				<input type="button" value="Sign IN">
+			</a>
 		</fieldset>
 	</form>
 </body>

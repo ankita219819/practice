@@ -23,6 +23,7 @@ public class LoginJSP extends HttpServlet{
 
 		int emp_ID=Integer.parseInt(req.getParameter("emp_ID"));
 		String Password=req.getParameter("password");
+		int c=1;
 		EmployeeDao dao=new EmployeeDaoImplement();
 
 
@@ -45,14 +46,29 @@ public class LoginJSP extends HttpServlet{
 			{
 				m.put(emp_ID, 1);
 			}
-			else {
+			else
+			{
 				count=m.get(emp_ID);
 				m.put(emp_ID, count+1);
 			}
-			System.out.println(m);
-			req.setAttribute("map", m);
-			//req.setAttribute("Inavlid_msg", "invalid user");
+			
+			if(m.get(emp_ID)>1) {
+				System.out.println("at");
+				req.setAttribute("close", "hello");
+				System.out.println("at2");
+				
+			}
+			else {
+				System.out.println("s1");
+				req.setAttribute("lmsg", "inavlid "+m.get(emp_ID)+" attempts");
+				System.out.println("s2");
+			}
+			System.out.println("s3");
 			req.getRequestDispatcher("./loginPage").forward(req, resp);
+			
+			
+			System.out.println(m);
+			
 		}
 	}//doPOst()
 }//loginjsp
