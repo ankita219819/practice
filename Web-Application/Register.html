@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" type="text/css" href="register.css">
+</head>
+
+<body>
+<div style="margin-top:110px;">
+	  <form method="post" id="registerTemplate" class="modal" action="index.html" onsubmit="registerDetails()">
+        <div class="modal-content">
+
+            <div class="container">
+                <label for="emailaddress"><b>Email Id</b></label>
+                <input id="emailAddress" type="email" name="emailaddress" placeholder="Enter Email Id" >
+
+                <label for="phone"><b>Phone Number</b></label>
+                <input id='phoneNumber' type="tel" name="phone" placeholder="Enter Phone Number" pattern="[0-9]{10}" required>
+                <div style="font-size: 14px;color: blue;">(Note: 10 digits Number)</div>
+
+                <label for="uname"><b>Username</b></label>
+                <input id="userName" type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input id="registerPassword" type="password" placeholder="Enter Password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                <div style="font-size: 14px;color: blue;"><span id="msg">Password must be 6 to 20 characters <br> which contain at least: <br> one numeric digit <br> one uppercase <br> one lowercase letter"</span></div>
+
+                <button type="submit">Register</button>
+                <button  onclick="reset()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="register.js">
+	
+</script>
+
+</body>
+</html>

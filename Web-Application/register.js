@@ -1,0 +1,49 @@
+function registerDetails() { // onclick of register Button
+    console.log("hi");
+            var validation = validateForm();
+            if (validation) {
+                var users = JSON.parse(localStorage.getItem('Users')) || [];
+                var userData = [{
+                    Email: document.getElementById("emailAddress").value
+                }, {
+                    Phone: document.getElementById("phoneNumber").value
+                }, {
+                    Username: document.getElementById("userName").value
+                }, {
+                    LoginPassword: document.getElementById("registerPassword").value
+                }];
+                users.push(userData);
+                localStorage.setItem('Users', JSON.stringify(users));
+                alert("Registered Succesfully");
+            }
+        }
+        function validateForm() {
+            console.log("hello");
+        	let msg;
+            if (document.getElementById("emailAddress").value == "") {
+                return false;
+            } else if (document.getElementById("phoneNumber").value == "") {
+                return false;
+            } else if (document.getElementById("userName").value == "") {
+                return false;
+            } else if (document.getElementById("registerPassword").value == "") {
+                return false;
+            }
+            if (document.getElementById("registerPassword").value != "") {
+                var str = document.getElementById("registerPassword").value;
+                if (str.match(/[a-z]/g) && str.match(/[A-Z]/g) && str.match(/[0-9]/g) && str.match(/[^a-zA-Z\d]/g) && str.length >= 6) {
+
+                } else {
+                	msg=document.getElementById("msg").innerHTML="Password must be 6 to 20 characters <br> which contain at least: <br> one numeric digit <br> one uppercase <br> one lowercase letter";
+        document.getElementById("msg").style.color = "#ff0000";
+         document.getElementById("msg").style.fontSize = "12px";
+         document.getElementById("registerTemplate").pwd.reset();
+                    return false;
+                }
+            }
+            return true;
+        }
+       function reset()
+       {
+       	document.getElementById("registerTemplate").reset();
+       }
