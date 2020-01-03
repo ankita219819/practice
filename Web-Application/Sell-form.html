@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+	<link rel="stylesheet" type="text/css" href="home.css">
+	<style type="text/css">
+		form{
+			margin-top: 110px;
+		}
+		form input[type=text],
+        form input[type=upload]
+        {
+        	display: block;
+        	outline: none;
+        	border: 1px #ddd solid;
+        	border-radius: 10px;
+        	padding:7px;
+        	margin: 7px;
+        	background: none;
+        }
+        form .container{
+        	margin:20px auto 15px 30px; 
+        	padding: 10px;
+        }
+        form select{
+        	display: block;
+        	padding:7px;
+        	border: none;
+        	margin-bottom: 10px; 
+        }
+        form textarea{
+        	display: block;
+        	padding:7px;
+        	
+        	margin-bottom: 10px;
+        }
+        form button{
+        	display: block;
+        	padding: 10px;
+        	margin: 15px;
+        	border-radius: 15px;
+        	outline: none;
+        	color:#2ecc71 ;
+        	border: 2px solid #2ecc71;
+        	transition: 0.25s;
+        }
+        form button:hover{
+        	
+        	background: #2ecc71;
+  			color: #fff;
+        }
+        form legend{
+        	
+        	padding:20px;
+        	font-family: Georgia;
+        	font-style: italic;
+        }
+        
+        
+	</style>
+
+</head>
+<body onload="formData()">
+	<nav>
+
+        <ul>
+            <li> <a href="home.html">Home</a> </li>
+            <li>Contact Us</li>
+            <li><input type="text" name="search">
+            <label for="search">Search</label></li>
+            <li>
+                <select name="loc" id="loc">
+                    <option value="loc" hidden>Location</option>
+                    <Option value="ben">Bengaluru</Option>
+                    <option value="del">Delhi</option>
+                    <option value="mu">Mumbai</option>
+                </select>
+            </li>
+            <li> <a href="#">Order</a></li>
+             <li> <a href="Sell-form.html">Put for rent</a></li>
+            <li><a id="reg" href="#">Register</a></li>
+        </ul>
+    </nav>
+
+	<form >
+	<div class="modal-content" >
+	<div class="container">
+		<legend >Fill Description about the item to be in rent</legend>
+		<label for="productName"><b>Product Name:</b></label>
+		<input type="text" id="productName" name="productName" placeholder="Enter prduct name">
+		<select id="ddlViewBy" name="cars">
+  			<option value="Category" selected  style="display: none">Category</option>
+  			<option value="Book">Book</option>
+  			<option value="Clothes">Clothes </option>
+  			<option value="Furniture">Furniture</option>
+		</select>
+		<label for="Description"><b>Description</b></label>
+		<textarea id="des" rows="4" cols="20"></textarea>
+		<label for="productPic"><b>Upload Pic</b></label>
+		<input type="file" id="filePath" name="productPic" accept="image/gif, image/jpeg, image/png, image/jfif" onchange="contents()">
+		<button type="submit" >Upload</button>
+		</div>
+	</div>
+	<div id="cont" >
+		<img style="float:left; padding-right:30px;" id="output" >
+		<div id="info"></div>
+	</div>
+
+	</form>
+	<script type="text/javascript">
+		function formData(){
+			var users = JSON.parse(localStorage.getItem('Users')) || [];
+			var logName=localStorage.getItem("logname");
+			console.log(logName);
+			document.getElementById('reg').innerHTML=logName;
+		}
+		function contents(){
+			let proName=document.getElementById('productName').value;
+			let Des=document.getElementById('des').value;
+			var e = document.getElementById("ddlViewBy");
+			var strUser = e.options[e.selectedIndex].text;
+			var image = document.getElementById('output');
+			image.src = URL.createObjectURL(event.target.files[0]);
+			document.getElementById('info').innerHTML="<p> <b>Product Name:</b> "+proName+"</p><p><b>Description:</b>"+Des+"</p><p> <b>Category:</b> "+strUser+"</p>";
+
+		}
+	</script>
+</body>
+</html>
